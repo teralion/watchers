@@ -4,7 +4,7 @@ import request from 'request';
 
 async function getTemplates(ctx) {
   ctx.body = template.render({
-    title: 'Hello, Server!',
+    title: 'Watchers - сервисный центр швейцарских часов',
   });
 }
 

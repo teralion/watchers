@@ -5,11 +5,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    'airbnb',
-    'eslint:recommended',
-    'plugin:react/recommended'
-  ],
+  extends: ['airbnb'],
   globals: {
     GLOBALS: true,
     NODE_ENV: true,
@@ -30,12 +26,12 @@ module.exports = {
       webpack: {
         config: {
           resolve: {
-            modules: ['./', 'node_modules'],
+            modules: ['node_modules', './'],
           },
         },
       },
       node: {
-        moduleDirectory: ['./', 'node_modules'],
+        moduleDirectory: ['node_modules', './'],
       },
     },
   },

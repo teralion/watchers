@@ -14,7 +14,7 @@ if (!availableEnvs.includes(NODE_ENV)) {
 
 function requireDotenv(filePath) {
   /* no build config for webpack-configs itself */
-  require('dotenv').config({ path: filePath }); /* eslint-disable-line global-require */
+  require('dotenv').config({ path: filePath }); /* eslint-disable-line */
 }
 
 export default function getEnvVariables(context) {
