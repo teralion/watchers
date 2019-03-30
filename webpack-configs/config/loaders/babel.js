@@ -2,6 +2,7 @@
 export default function configureBabel() {
   const presets = [
     '@babel/preset-env',
+    '@babel/react',
   ];
 
   const plugins = [

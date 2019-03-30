@@ -5,7 +5,11 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: 'airbnb',
+  extends: [
+    'airbnb',
+    'eslint:recommended',
+    'plugin:react/recommended'
+  ],
   globals: {
     GLOBALS: true,
     NODE_ENV: true,
@@ -29,6 +33,9 @@ module.exports = {
             modules: ['./', 'node_modules'],
           },
         },
+      },
+      node: {
+        moduleDirectory: ['./', 'node_modules'],
       },
     },
   },

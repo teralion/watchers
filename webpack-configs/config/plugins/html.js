@@ -5,7 +5,6 @@ function getOptions(context) {
   const { DIR } = context;
 
   return {
-    title: 'Watchers',
     inject: 'body',
     template: path.join(DIR, 'server', 'templates', 'app.mustache'),
     filename: 'main.mustache',
