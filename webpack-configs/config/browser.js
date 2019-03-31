@@ -6,11 +6,12 @@ import optimization from './utils/optimization';
 import dotenv from './utils/dotenv';
 import babel from './loaders/babel';
 import statics from './loaders/statics';
-import { css, styl } from './loaders/css';
+import { styl } from './loaders/css';
 import composeGlobals from './plugins/globals';
 import html from './plugins/html';
 import hmr from './plugins/webpack';
 import compression from './plugins/compression';
+import environment from './plugins/environment';
 
 const context = {
   DIR: path.resolve('./'),
@@ -20,10 +21,15 @@ dotenv(context);
 
 export default function browser(config) {
   const { production = false, development = true } = config;
-  const props = { production, development, ...context };
+  const props = {
+    production,
+    development,
+    isBrowser: true,
+    isServer: false,
+    ...context,
+  };
 
   return {
-    target: 'web',
     mode: production ? 'production' : 'development',
     context: context.DIR,
     entry: entry(props),
@@ -35,11 +41,11 @@ export default function browser(config) {
         babel(),
         statics(),
         styl(props),
-        css(props),
       ],
     },
     plugins: [
       html(props),
+      environment(props),
       composeGlobals(props),
       development ? hmr() : false,
       production ? compression() : false,

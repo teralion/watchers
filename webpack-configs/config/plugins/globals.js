@@ -66,7 +66,7 @@ export default function defineGlobals(props) {
 
   const composedGlobals = {
     __dirname: JSON.stringify(DIR),
-    __filename: JSON.stringify(path.join(DIR, 'index.js')),
+    __filename: JSON.stringify(path.join(DIR, 'index.css.js')),
     NODE_ENV: extractNodeEnv(),
     'process.env.NODE_ENV': extractNodeEnv(),
     GLOBALS: composeGlobals(globals),

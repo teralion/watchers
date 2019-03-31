@@ -8,13 +8,9 @@ app.listen(GLOBALS.PORT, appMessage);
 
 /* Handle /assets/ */
 
-const devServerMessage = () => console.log(
-  `Dev Server is running on ${GLOBALS.DEV_SERVER_PORT}port`,
-);
-
 async function startDevServer() {
   await import('./devServer').then(({ default: devServer }) => {
-    devServer.listen(GLOBALS.DEV_SERVER_PORT, devServerMessage);
+    (devServer || {}).listen(GLOBALS.DEV_SERVER_PORT);
   });
 }
 
@@ -22,6 +18,5 @@ if (
   NODE_ENV === 'development'
   && GLOBALS.DEV_SERVER_PORT
 ) {
-  console.log('START DEV SERVER!!1!1!');
   startDevServer();
 }

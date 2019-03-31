@@ -7,7 +7,10 @@ import resolve from './utils/resolve';
 import externals from './utils/externals';
 import babel from './loaders/babel';
 import mustache from './loaders/mustache';
+import { serverStyl } from './loaders/css';
 import composeGlobals from './plugins/globals';
+import extractStyl from './plugins/extractCss';
+import environment from './plugins/environment';
 
 const context = {
   DIR: path.resolve('./'),
@@ -17,7 +20,14 @@ dotenv(context);
 
 export default function server(config) {
   const { production = false, development = true } = config;
-  const props = { production, development, ...context };
+
+  const props = {
+    production,
+    development,
+    isBrowser: false,
+    isServer: true,
+    ...context,
+  };
 
   return {
     target: 'node',
@@ -31,9 +41,14 @@ export default function server(config) {
       rules: [
         babel(props),
         mustache(props),
+        serverStyl(props),
       ],
     },
-    plugins: [composeGlobals(props)],
+    plugins: [
+      extractStyl(props),
+      environment(props),
+      composeGlobals(props),
+    ],
     optimization: optimization(props),
   };
 }

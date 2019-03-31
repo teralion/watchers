@@ -39,5 +39,6 @@ module.exports = {
     'react',
   ],
   rules: {
+    'consistent-return': ['off'],
   },
 };

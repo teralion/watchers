@@ -1,4 +1,7 @@
-import UglifyJs from 'uglifyjs-webpack-plugin'; /* eslint-disable-line */
+/* eslint-disable-next-line */
+import UglifyJs from 'uglifyjs-webpack-plugin';
+/* eslint-disable-next-line */
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default function optimize(props) {
   const { development } = props;
@@ -17,6 +20,12 @@ export default function optimize(props) {
           name: 'vendors',
           chunks: 'all',
         },
+        styles: {
+          name: 'css',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
       },
     },
     minimizer: [
@@ -25,6 +34,7 @@ export default function optimize(props) {
         sourceMap: true,
         cache: true,
       }),
+      new OptimizeCssAssetsPlugin({}),
     ],
   };
 }

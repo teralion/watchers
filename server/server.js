@@ -1,7 +1,8 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 
-import { all, assets } from './routes';
+import assets from './routes/assets';
+import prerender from './routes/prerender';
 
 import errors from './handlers/errors';
 import logger from './handlers/logger';
@@ -21,7 +22,7 @@ app.use(favicon);
 
 router
   .get('/assets/*', filename, assets)
-  .get('*', all)
+  .get('*', prerender);
 
 app.use(router.routes());
 

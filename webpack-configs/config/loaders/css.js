@@ -1,7 +1,9 @@
+/* eslint-disable-next-line */
+import MiniCssPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 
 function common(props) {
-  const { production } = props;
+  const { production = true } = props;
 
   return [
     {
@@ -30,23 +32,26 @@ function common(props) {
 }
 
 export function styl(props) {
+  const { production = true } = props;
+
   return {
     test: /\.styl$/,
     use: [
       {
         loader: 'style-loader',
-        options: {
-          sourceMap: true,
-        },
+        options: { sourceMap: production },
       },
       ...common(props),
     ],
   };
 }
 
-export function css(props) {
+export function serverStyl(props) {
   return {
-    test: /\.css$/,
-    use: [...common(props)],
+    test: /\.styl$/,
+    use: [
+      MiniCssPlugin.loader,
+      ...common(props),
+    ],
   };
 }
