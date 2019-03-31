@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import { matchPath } from 'react-router';
 
-import Landing from 'app/pages/Landing';
-import template from 'build/main.mustache'; /* eslint-disable-line */
+import routes from 'app/routes/routes';
+/* eslint-disable-next-line */
+import template from 'build/main.mustache';
 
 function prerender(ctx) {
-  const context = {};
+  /*
+  * StaticRouter does not work in production build.
+  * God knows why.
+  * */
 
-  const html = ReactDOM.renderToString(
-    <Landing />,
-  );
+  const { component: Component } = routes.find(
+    route => matchPath(ctx.path, route),
+  ) || {};
 
-  if (context.url) {
-    ctx.set('Location', context.url);
-    ctx.status = 302;
+  let html = '';
 
-    return ctx;
+  if (NODE_ENV === 'production') {
+    html = ReactDOM.renderToString(
+      <Component />,
+    );
   }
 
   ctx.status = 200;

@@ -8,7 +8,8 @@ function globalizeName(name) {
 }
 
 function filterNumber(value) {
-  if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) { /* eslint-disable-line */
+  /* eslint-disable-next-line */
+  if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
     return Number(value);
   }
 
@@ -66,7 +67,7 @@ export default function defineGlobals(props) {
 
   const composedGlobals = {
     __dirname: JSON.stringify(DIR),
-    __filename: JSON.stringify(path.join(DIR, 'index.css.js')),
+    __filename: JSON.stringify(path.join(DIR, 'index.js')),
     NODE_ENV: extractNodeEnv(),
     'process.env.NODE_ENV': extractNodeEnv(),
     GLOBALS: composeGlobals(globals),

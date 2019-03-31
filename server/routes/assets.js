@@ -19,9 +19,9 @@ function getUnknownAsset(ctx) {
 }
 
 function getAsset(ctx) {
-  if (NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     getDevAsset(ctx);
-  } else if (NODE_ENV === 'production') {
+  } else if (process.env.NODE_ENV === 'production') {
     getProdAsset(ctx);
   } else {
     getUnknownAsset(ctx);

@@ -4,7 +4,7 @@ import UglifyJs from 'uglifyjs-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default function optimize(props) {
-  const { development } = props;
+  const { development = true } = props;
 
   if (development) {
     return {};

@@ -15,7 +15,7 @@ async function startDevServer() {
 }
 
 if (
-  NODE_ENV === 'development'
+  process.env.NODE_ENV === 'development'
   && GLOBALS.DEV_SERVER_PORT
 ) {
   startDevServer();

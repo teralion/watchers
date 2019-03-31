@@ -1,6 +1,6 @@
 
 export default function applyMustache(props) {
-  const { production } = props;
+  const { production = false } = props;
 
   return {
     test: /\.mustache$/,

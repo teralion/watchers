@@ -1,9 +1,8 @@
 import React from 'react';
-import css from './index.styl';
 
 function Landing() {
   return (
-    <main className={css.landing}>
+    <main>
       <header>
         <nav>
           <img src="/logo-gold.png" alt="logo-gold" />
@@ -20,7 +19,7 @@ function Landing() {
           </div>
         </nav>
         <div>
-          <p>--Это самопечат</p>
+          <p>--Это самопечатающийся текст</p>
           <h1>Ремонт швейцарских часов в Москве</h1>
           <img src="/logo-wh.png" alt="logo-whit" />
           <button type="button">
