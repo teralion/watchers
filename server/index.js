@@ -1,10 +1,12 @@
-import app from './server'; /* eslint-disable-line consistent-return */
+/* eslint-disable-next-line consistent-return */
+import app from './server';
 
 const appMessage = () => console.log(
   `App is running on ${GLOBALS.PORT} port`,
 );
 
-app.listen(GLOBALS.PORT, appMessage);
+// process.env.PORT for heroku
+app.listen(process.env.PORT || GLOBALS.PORT, appMessage);
 
 /* Handle /assets/ */
 
