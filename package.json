@@ -16,7 +16,7 @@
     "dev": "npm run build-dev && npm run start",
     "prod": "npm run build-prod && npm run start",
     "start": "node ./build/server.js",
-    "heroku-postbuild": "export NODE_ENV=development && npm run build-dev-browser && npm run build-dev-server"
+    "heroku-postbuild": "export NODE_ENV=production && npm run build-prod-browser && npm run build-prod-server"
   },
   "author": "db",
   "license": "WTFPL",
