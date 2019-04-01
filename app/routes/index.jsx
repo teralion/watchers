@@ -1,21 +1,13 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 
-import routes from 'app/routes/routes';
+import Landing from 'app/pages/Landing';
 
 function Routes() {
   return (
-    <div>
-      <Switch>
-        {routes.map(({ path, component: C, ...rest }) => (
-          <Route
-            key={path}
-            path={path}
-            render={props => <C {...props} {...rest} />}
-          />
-        ))}
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/" component={Landing} />
+    </Switch>
   );
 }
 

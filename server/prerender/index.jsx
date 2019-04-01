@@ -1,27 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import { matchPath } from 'react-router';
+import { StaticRouter } from 'react-router-dom';
 
-import routes from 'app/routes/routes';
+import Routes from 'app/routes';
 /* eslint-disable-next-line */
 import template from 'build/main.mustache';
 
 function prerender(ctx) {
   /*
-  * StaticRouter does not work in production build.
+  * StaticRouter does not work in react-router-dom@5.0.0
+  * on production build.
+  *
   * God knows why.
   * */
 
-  const { component: Component } = routes.find(
-    route => matchPath(ctx.path, route),
-  ) || {};
-
+  const context = {};
   let html = '';
 
-  if (NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     html = ReactDOM.renderToString(
-      <Component />,
+      <StaticRouter
+        location={ctx.url}
+        context={context}
+      >
+        <Routes />
+      </StaticRouter>,
     );
+  }
+
+  if (context.url) {
+    ctx.redirect(context.url);
+    ctx.status = 302;
+
+    return ctx;
   }
 
   ctx.status = 200;
