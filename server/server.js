@@ -21,7 +21,7 @@ app.use(statics);
 app.use(favicon);
 
 router
-  .get('/assets/*', filename, assets)
+  .get(`${GLOBALS.PUBLIC_PATH}*`, filename, assets)
   .get('*', prerender);
 
 app.use(router.routes());

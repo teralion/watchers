@@ -49,6 +49,7 @@ function extractNodeEnv() {
 export const globals = {
   PORT: undefined,
   DEV_SERVER_PORT: undefined,
+  PUBLIC_PATH: undefined,
 };
 
 export default function defineGlobals(props) {

@@ -4,9 +4,9 @@ export function browser(props) {
   const { DIR } = props;
 
   return {
-    filename: '[name].js',
+    filename: 'app.js',
     path: path.join(DIR, 'build'),
-    publicPath: '/assets/',
+    publicPath: process.env.PUBLIC_PATH,
   };
 }
 

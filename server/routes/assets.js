@@ -3,7 +3,9 @@ import request from 'request';
 
 function getDevAsset(ctx) {
   if (GLOBALS.DEV_SERVER_PORT) {
-    ctx.body = request(`http://localhost:${GLOBALS.DEV_SERVER_PORT}/assets/${ctx.filename}`);
+    ctx.body = request(
+      `http://localhost:${GLOBALS.DEV_SERVER_PORT}${GLOBALS.PUBLIC_PATH}${ctx.filename}`,
+    );
   } else {
     console.warn('NO DEV_SERVER_PORT');
   }
@@ -14,7 +16,7 @@ function getProdAsset(ctx) {
 }
 
 function getUnknownAsset(ctx) {
-  ctx.body = 'No assets found';
+  ctx.body = `No ${GLOBALS.PUBLIC_PATH} found`;
   ctx.status = 404;
 }
 

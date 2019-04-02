@@ -3,11 +3,11 @@ import WebpackDevServer from 'webpack-dev-server';
 import config from 'webpack-configs/browser.development';
 
 const options = {
-  publicPath: '/assets/',
+  publicPath: GLOBALS.PUBLIC_PATH,
   hot: true,
   host: 'localhost',
   port: GLOBALS.DEV_SERVER_PORT,
-  writeToDisk: true,
+  writeToDisk: false,
 };
 
 WebpackDevServer.addDevServerEntrypoints(config, options);

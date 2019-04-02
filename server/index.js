@@ -8,7 +8,7 @@ const appMessage = () => console.log(
 // process.env.PORT for heroku
 app.listen(process.env.PORT || GLOBALS.PORT, appMessage);
 
-/* Handle /assets/ */
+/* Handle GLOBALS.PUBLIC_PATH */
 
 async function startDevServer() {
   await import('./devServer').then(({ default: devServer }) => {
