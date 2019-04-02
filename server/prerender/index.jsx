@@ -7,22 +7,13 @@ import Routes from 'app/routes';
 import template from 'build/main.mustache';
 
 function prerender(ctx) {
-  /*
-  * StaticRouter does not work in react-router-dom@5.0.0
-  * on production build.
-  *
-  * God knows why.
-  * */
-
   const context = {};
+
   let html = '';
 
   if (process.env.NODE_ENV === 'production') {
     html = ReactDOM.renderToString(
-      <StaticRouter
-        location={ctx.url}
-        context={context}
-      >
+      <StaticRouter location={ctx.url} context={context}>
         <Routes />
       </StaticRouter>,
     );

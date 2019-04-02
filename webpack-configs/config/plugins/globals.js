@@ -1,11 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 import reduce from 'lodash.reduce';
-import snakeCase from 'lodash.snakecase';
-
-function globalizeName(name) {
-  return snakeCase(name).toUpperCase();
-}
 
 function filterNumber(value) {
   /* eslint-disable-next-line */
@@ -34,17 +29,11 @@ function sanitizeValue(value) {
   }
 }
 
-function getNameAndValue(defaultValue, name) {
-  const globalizedName = globalizeName(name);
-  const value = process.env[name] || defaultValue;
-
-  return [globalizedName, sanitizeValue(value)];
-}
-
 function reducer(result, defaultValue, name) {
-  const [globalizedName, value] = getNameAndValue(defaultValue, name);
-
-  result[globalizedName] = value; /* eslint-disable-line */
+  /* eslint-disable-next-line */
+  result[name] = sanitizeValue(
+    process.env[name] || defaultValue,
+  );
 
   return result;
 }
@@ -54,7 +43,7 @@ function composeGlobals(globals) {
 }
 
 function extractNodeEnv() {
-  return JSON.stringify(process.env.NODE_ENV || 'development');
+  return JSON.stringify(process.env.NODE_ENV);
 }
 
 export const globals = {

@@ -13,7 +13,11 @@ function render() {
   );
 }
 
-if (NODE_ENV === 'production') {
+/*
+* Hmr on development mode.
+* SSR on production.
+* */
+if (GLOBALS.NODE_ENV === 'production') {
   ReactDOM.hydrate(
     render(),
     document.getElementById('app'),
