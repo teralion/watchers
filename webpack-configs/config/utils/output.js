@@ -1,11 +1,12 @@
 import path from 'path';
 
 export function browser(props) {
-  const { DIR, production = true } = props;
+  const { DIR, development = true } = props;
 
-  const filename = production
-    ? '[name]@[hash:12].js' // used in prerender
-    : '[name].js';
+  // server/prerender/getStatics.js
+  const filename = development
+    ? '[name].js'
+    : '[name]@[hash:12].js';
 
   return {
     filename,

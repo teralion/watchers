@@ -4,9 +4,10 @@ import MiniCssPlugin from 'mini-css-extract-plugin';
 export default function extractStyl(props) {
   const { development = true } = props;
 
+  // server/prerender/getStatics.js
   const filename = development
     ? '[name].css'
-    : '[name]@[hash:12].css'; // used in prerender
+    : '[name]@[hash:12].css';
 
   return new MiniCssPlugin({ filename });
 }
