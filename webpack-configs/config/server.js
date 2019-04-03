@@ -8,6 +8,7 @@ import externals from './utils/externals';
 import babel from './loaders/babel';
 import mustache from './loaders/mustache';
 import serverStyl from './loaders/css';
+import statics from './loaders/statics';
 import composeGlobals from './plugins/globals';
 import extractStyl from './plugins/extractCss';
 import environment from './plugins/environment';
@@ -40,6 +41,7 @@ export default function server(config) {
     module: {
       rules: [
         babel(props),
+        statics(),
         mustache(props),
         serverStyl(props),
       ],

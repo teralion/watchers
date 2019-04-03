@@ -6,8 +6,8 @@ const statics = {
 };
 
 const regs = {
-  js: /\.js/,
-  css: /\.css/,
+  js: /\.js$/,
+  css: /\.css$/,
 };
 
 const files = allowedBuildFiles;

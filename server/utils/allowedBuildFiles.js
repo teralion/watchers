@@ -8,12 +8,14 @@ function getFileTests() {
     return [
       v => /^app@\w{12}\.(js|css)$/.test(v),
       v => /^server@\w{12}\.css$/.test(v),
+      v => /\.(png|jpe?g|woff|pdf)$/.test(v),
     ];
   }
 
   return [
     v => /^app\.(js|css)$/.test(v),
     v => /^server\.css$/.test(v),
+    v => /\.(png|jpe?g|woff|pdf)$/.test(v),
   ];
 }
 
@@ -53,5 +55,12 @@ function getAllowedFiles() {
 
   return allowedBuildFiles;
 }
+
+/*
+* It is easier to reason about
+* when all build files are stored
+* in one ./build folder, but to
+* decide protection level on runtime
+* */
 
 export default getAllowedFiles();

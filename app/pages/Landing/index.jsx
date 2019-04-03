@@ -4,6 +4,7 @@ import './index.styl';
 function Landing() {
   return (
     <main>
+      {/* Header */}
       <header>
         <nav>
           <img src="/logo-gold.png" alt="logo-gold" />
@@ -20,7 +21,7 @@ function Landing() {
           </div>
         </nav>
         <div>
-          <p>--Это самопечатающийся текст</p>
+          <p>--- Это самопечатающийся текст</p>
           <h1>Ремонт швейцарских часов в Москве</h1>
           <img src="/logo-wh.png" alt="logo-whit" />
           <button type="button">
@@ -28,7 +29,8 @@ function Landing() {
           </button>
         </div>
       </header>
-      <section />
+
+      {/* Middle */}
       <section>
         <h2>Когда часы приносят нам</h2>
         <div>
@@ -57,6 +59,8 @@ function Landing() {
           </ul>
         </div>
       </section>
+
+      {/* Contacts */}
       <section>
         <div>
           <h2>
@@ -98,9 +102,13 @@ function Landing() {
           </button>
         </div>
       </section>
+
+      {/* Map */}
       <section>
         Карта
       </section>
+
+      {/* Footer */}
       <footer>
         <img src="/logo-gold.png" alt="logo-gold" />
         <div>

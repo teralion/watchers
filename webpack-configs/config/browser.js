@@ -44,8 +44,8 @@ export default function browser(config) {
       ],
     },
     plugins: [
-      environment(props),
       composeGlobals(props),
+      environment(props),
       extractStyl(props),
       development ? hmr() : false,
       production ? compression() : false,

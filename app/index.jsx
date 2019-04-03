@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import 'app/styles/index.styl';
+
 //* components
 import Routes from 'app/routes';
 
@@ -14,8 +16,8 @@ function render() {
 }
 
 /*
-* Hmr on development mode.
 * SSR on production.
+* HMR on development.
 * */
 if (GLOBALS.NODE_ENV === 'production') {
   ReactDOM.hydrate(
