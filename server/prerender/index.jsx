@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 
 import Routes from 'app/routes';
-/* eslint-disable-next-line */
-import template from 'build/main.mustache';
+
+import getStatics from './getStatics';
+import { app, partials } from '../templates';
 
 function prerender(ctx) {
   const context = {};
+  const statics = getStatics();
 
   let html = '';
 
@@ -27,7 +29,11 @@ function prerender(ctx) {
   }
 
   ctx.status = 200;
-  ctx.body = template.render({ html });
+  ctx.body = app.render({
+    html,
+    statics,
+    GLOBALS,
+  }, partials);
 }
 
 export default prerender;

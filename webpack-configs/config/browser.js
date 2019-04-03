@@ -8,7 +8,6 @@ import babel from './loaders/babel';
 import statics from './loaders/statics';
 import { styl } from './loaders/css';
 import composeGlobals from './plugins/globals';
-import html from './plugins/html';
 import hmr from './plugins/webpack';
 import compression from './plugins/compression';
 import environment from './plugins/environment';
@@ -44,7 +43,6 @@ export default function browser(config) {
       ],
     },
     plugins: [
-      html(props),
       environment(props),
       composeGlobals(props),
       development ? hmr() : false,

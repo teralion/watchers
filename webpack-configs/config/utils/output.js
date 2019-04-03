@@ -1,10 +1,14 @@
 import path from 'path';
 
 export function browser(props) {
-  const { DIR } = props;
+  const { DIR, production = true } = props;
+
+  const filename = production
+    ? '[name]@[hash:12].js' // used in prerender
+    : '[name].js';
 
   return {
-    filename: 'app.js',
+    filename,
     path: path.join(DIR, 'build'),
     publicPath: process.env.PUBLIC_PATH,
   };

@@ -6,7 +6,7 @@ export default function extractStyl(props) {
 
   const filename = development
     ? '[name].css'
-    : '[name]@[hash:12].css'; // prevents caching
+    : '[name]@[hash:12].css'; // used in prerender
 
   return new MiniCssPlugin({ filename });
 }
