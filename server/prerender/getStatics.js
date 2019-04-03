@@ -1,87 +1,46 @@
-import fs from 'fs';
+import allowedBuildFiles from '../utils/allowedBuildFiles';
 
-const s = {
-  app: '',
-  css: '',
+const statics = {
+  js: [],
+  css: [],
 };
 
-const files = fs.readdirSync('build');
+const regs = {
+  js: /\.js/,
+  css: /\.css/,
+};
 
-function isStaticsFound() {
-  if (process.env.NODE_ENV === 'production') {
-    return Boolean(s.app) && Boolean(s.css);
-  } if (process.env.NODE_ENV === 'development') {
-    return Boolean(s.app);
+const files = allowedBuildFiles;
+
+function placeFilename(filename) {
+  if (regs.js.test(filename)) {
+    statics.js.push({ name: filename });
+  }
+
+  if (regs.css.test(filename)) {
+    statics.css.push({ name: filename });
   }
 }
 
-function getRegs() {
-  if (process.env.NODE_ENV === 'production') {
-    return {
-      app: /^app@\w{12}\.js$/,
-      css: /^server@\w{12}\.css$/,
-    };
-  }
-
-  return {
-    app: /^app\.js$/,
-    css: /^server\.css$/,
-  };
-}
-
-function development() {
-  const { app } = getRegs();
-
-  /* eslint-disable-next-line no-plusplus */
-  for (let i = 0; i < files.length; i++) {
-    const filename = files[i];
-
-    if (app.test(filename)) {
-      s.app = filename;
-    }
-
-    if (isStaticsFound()) {
-      return s;
-    }
-  }
-
-  return s;
-}
-
-function production() {
-  // s do not change on production
-  if (isStaticsFound()) {
-    return s;
-  }
-
-  const { app, css } = getRegs();
-
-  /* eslint-disable-next-line no-plusplus */
-  for (let i = 0; i < files.length; i++) {
-    const filename = files[i];
-
-    if (app.test(filename)) {
-      s.app = filename;
-    }
-
-    if (css.test(filename)) {
-      s.css = filename;
-    }
-
-    if (isStaticsFound()) {
-      return s;
-    }
-  }
-
-  return s;
+function isStatics() {
+  return (
+    Boolean(statics.js.length)
+    && Boolean(statics.css.length)
+  );
 }
 
 function getStatics() {
-  if (process.env.NODE_ENV === 'production') {
-    return production();
+  // caching
+  if (isStatics()) {
+    return statics;
   }
 
-  return development();
+  /* eslint-disable-next-line no-plusplus */
+  for (let i = 0; i < files.length; i++) {
+    placeFilename(files[i]);
+  }
+
+  return statics;
 }
 
 export default getStatics;

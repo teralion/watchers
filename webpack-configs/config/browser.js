@@ -6,11 +6,12 @@ import optimization from './utils/optimization';
 import dotenv from './utils/dotenv';
 import babel from './loaders/babel';
 import statics from './loaders/statics';
-import { styl } from './loaders/css';
+import browserStyl from './loaders/css';
 import composeGlobals from './plugins/globals';
 import hmr from './plugins/webpack';
 import compression from './plugins/compression';
 import environment from './plugins/environment';
+import extractStyl from './plugins/extractCss';
 
 const context = {
   DIR: path.resolve('./'),
@@ -39,12 +40,13 @@ export default function browser(config) {
       rules: [
         babel(),
         statics(),
-        styl(props),
+        browserStyl(props),
       ],
     },
     plugins: [
       environment(props),
       composeGlobals(props),
+      extractStyl(props),
       development ? hmr() : false,
       production ? compression() : false,
     ].filter(Boolean),

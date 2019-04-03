@@ -1,18 +1,18 @@
 import fs from 'fs';
 
 const files = fs.readdirSync('build');
-const allowedFiles = [];
+const allowedBuildFiles = [];
 
 function getFileTests() {
   if (process.env.NODE_ENV === 'production') {
     return [
-      v => /^app@\w{12}\.js$/.test(v),
+      v => /^app@\w{12}\.(js|css)$/.test(v),
       v => /^server@\w{12}\.css$/.test(v),
     ];
   }
 
   return [
-    v => /^app\.js$/.test(v),
+    v => /^app\.(js|css)$/.test(v),
     v => /^server\.css$/.test(v),
   ];
 }
@@ -33,13 +33,13 @@ function isAllowed(filename) {
 }
 
 function isAllowedFiles() {
-  return Boolean(allowedFiles.length);
+  return Boolean(allowedBuildFiles.length);
 }
 
 function getAllowedFiles() {
   // caching
   if (isAllowedFiles()) {
-    return allowedFiles;
+    return allowedBuildFiles;
   }
 
   /* eslint-disable-next-line no-plusplus */
@@ -47,11 +47,11 @@ function getAllowedFiles() {
     const filename = files[i];
 
     if (isAllowed(filename)) {
-      allowedFiles.push(filename);
+      allowedBuildFiles.push(filename);
     }
   }
 
-  return allowedFiles;
+  return allowedBuildFiles;
 }
 
 export default getAllowedFiles();

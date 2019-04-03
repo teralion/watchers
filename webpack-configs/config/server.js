@@ -7,7 +7,7 @@ import resolve from './utils/resolve';
 import externals from './utils/externals';
 import babel from './loaders/babel';
 import mustache from './loaders/mustache';
-import { serverStyl } from './loaders/css';
+import serverStyl from './loaders/css';
 import composeGlobals from './plugins/globals';
 import extractStyl from './plugins/extractCss';
 import environment from './plugins/environment';

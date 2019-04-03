@@ -31,22 +31,7 @@ function common(props) {
   ];
 }
 
-export function styl(props) {
-  const { production = true } = props;
-
-  return {
-    test: /\.styl$/,
-    use: [
-      {
-        loader: 'style-loader',
-        options: { sourceMap: production },
-      },
-      ...common(props),
-    ],
-  };
-}
-
-export function serverStyl(props) {
+export default function styl(props) {
   return {
     test: /\.styl$/,
     use: [
