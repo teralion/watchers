@@ -35,6 +35,11 @@ function isAllowed(filename) {
 }
 
 function isAllowedFiles() {
+  if (process.env.NODE_ENV === 'development') {
+    // HMR requires hot-update dynamically
+    return false;
+  }
+
   return Boolean(allowedBuildFiles.length);
 }
 
@@ -60,7 +65,7 @@ function getAllowedFiles() {
 * It is easier to reason about
 * when all build files are stored
 * in one ./build folder, but to
-* decide protection level on runtime
+* define protection level on runtime
 * */
 
 export default getAllowedFiles();
