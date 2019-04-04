@@ -45,8 +45,8 @@ export default function browser(config) {
     },
     plugins: [
       composeGlobals(props),
-      environment(props),
       extractStyl(props),
+      environment(props),
       development ? hmr() : false,
       production ? compression() : false,
     ].filter(Boolean),

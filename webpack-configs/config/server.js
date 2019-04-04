@@ -40,10 +40,10 @@ export default function server(config) {
     externals: externals(props),
     module: {
       rules: [
-        babel(props),
+        babel(),
         statics(),
-        mustache(props),
         serverStyl(props),
+        mustache(props),
       ],
     },
     plugins: [

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import 'app/styles/index.styl';
+import 'app/styles/app.styl';
 
 //* components
 import Routes from 'app/routes';

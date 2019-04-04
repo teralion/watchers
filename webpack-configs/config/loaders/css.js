@@ -1,17 +1,18 @@
+import path from 'path';
 /* eslint-disable-next-line */
 import MiniCssPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 
 function common(props) {
-  const { production = true } = props;
+  const { DIR, production = true } = props;
 
   return [
     {
       loader: 'css-loader',
       options: {
         modules: true,
-        localIdentName: '[name]-[local]-[hash:base64:5]',
         sourceMap: true,
+        localIdentName: '[name]-[local]-[hash:base64:5]',
       },
     },
     {
@@ -24,6 +25,7 @@ function common(props) {
     {
       loader: 'stylus-loader',
       options: {
+        import: [path.join(DIR, 'app', 'styles', 'index.styl')],
         sourceMap: production,
         preferPathResolver: 'webpack',
       },
