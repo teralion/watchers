@@ -5,20 +5,24 @@ const statics = {
   css: [],
 };
 
-const regs = {
-  js: /\.js$/,
-  css: /\.css$/,
+const tests = {
+  js: v => /\.js$/.test(v),
+  css: v => /\.css$/.test(v) && !v.includes('server'),
 };
 
 const files = allowedBuildFiles;
 
 function placeFilename(filename) {
-  if (regs.js.test(filename)) {
-    statics.js.push({ name: filename });
-  }
+  const testNames = Object.keys(tests);
 
-  if (regs.css.test(filename)) {
-    statics.css.push({ name: filename });
+  /* eslint-disable-next-line no-plusplus */
+  for (let i = 0; i < testNames.length; i++) {
+    const testName = testNames[i];
+    const isAllowed = tests[testName](filename);
+
+    if (isAllowed) {
+      return statics[testName].push({ name: filename });
+    }
   }
 }
 

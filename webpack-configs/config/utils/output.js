@@ -22,5 +22,6 @@ export function server(props) {
     filename: 'server.js',
     path: path.join(DIR, 'build'),
     libraryTarget: 'commonjs2',
+    publicPath: process.env.PUBLIC_PATH,
   };
 }

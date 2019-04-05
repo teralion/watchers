@@ -1,6 +1,4 @@
-/* eslint-disable-next-line */
 import UglifyJs from 'uglifyjs-webpack-plugin';
-/* eslint-disable-next-line */
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default function optimize(props) {
@@ -22,7 +20,7 @@ export default function optimize(props) {
         },
         styles: {
           name: 'css',
-          test: /\.css$/,
+          test: /\.(css)$/,
           chunks: 'all',
           enforce: true,
         },

@@ -1,5 +1,4 @@
 import path from 'path';
-/* eslint-disable-next-line */
 import MiniCssPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 
@@ -25,7 +24,7 @@ function common(props) {
     {
       loader: 'stylus-loader',
       options: {
-        import: [path.join(DIR, 'app', 'styles', 'index.styl')],
+        import: [path.join(DIR, 'app', 'styles', 'import.styl')],
         sourceMap: production,
         preferPathResolver: 'webpack',
       },
