@@ -6,14 +6,14 @@ const allowedBuildFiles = [];
 function getFileTests() {
   if (process.env.NODE_ENV === 'production') {
     return [
-      v => /^app@\w{12}\.(js|css)$/.test(v),
+      v => /^(app|vendors)@\w{12}\.(js|css)$/.test(v),
       v => /^server@\w{12}\.css$/.test(v),
       v => /\.(png|jpe?g|woff|ttf|pdf)$/.test(v),
     ];
   }
 
   return [
-    v => /^app\.(js|css)$/.test(v),
+    v => /^(app|vendors)\.(js|css)$/.test(v),
     v => /^server\.css$/.test(v),
     v => /\.(png|jpe?g|woff|ttf|pdf)$/.test(v),
   ];
@@ -36,7 +36,7 @@ function isAllowed(filename) {
 
 function isAllowedFiles() {
   if (process.env.NODE_ENV === 'development') {
-    // HMR requires hot-update dynamically
+    // HMR requires to hot-update dynamically
     return false;
   }
 

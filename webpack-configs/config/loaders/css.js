@@ -1,9 +1,10 @@
 import path from 'path';
+/* eslint-disable-next-line import/no-extraneous-dependencies */
 import MiniCssPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 
 function common(props) {
-  const { DIR, production = true } = props;
+  const { DIR } = props;
 
   return [
     {
@@ -17,7 +18,7 @@ function common(props) {
     {
       loader: 'postcss-loader',
       options: {
-        sourceMap: production,
+        sourceMap: false,
         plugins() { return [autoprefixer]; },
       },
     },
@@ -25,18 +26,45 @@ function common(props) {
       loader: 'stylus-loader',
       options: {
         import: [path.join(DIR, 'app', 'styles', 'import.styl')],
-        sourceMap: production,
+        sourceMap: false,
         preferPathResolver: 'webpack',
       },
     },
   ];
 }
 
-export default function styl(props) {
+export function server(props) {
   return {
     test: /\.styl$/,
     use: [
       MiniCssPlugin.loader,
+      ...common(props),
+    ],
+  };
+}
+
+export function browser(props) {
+  const { production = true } = props;
+
+  if (production) {
+    return {
+      test: /\.styl$/,
+      use: [
+        MiniCssPlugin.loader,
+        ...common(props),
+      ],
+    };
+  }
+
+  return {
+    test: /\.styl$/,
+    use: [
+      {
+        loader: 'style-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
       ...common(props),
     ],
   };

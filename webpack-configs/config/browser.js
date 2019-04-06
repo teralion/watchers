@@ -6,9 +6,9 @@ import optimization from './utils/optimization';
 import dotenv from './utils/dotenv';
 import babel from './loaders/babel';
 import statics from './loaders/statics';
-import browserStyl from './loaders/css';
+import { browser as styl } from './loaders/css';
 import composeGlobals from './plugins/globals';
-import hmr from './plugins/webpack';
+import { hmr, moduleConcatenation } from './plugins/webpack';
 import compression from './plugins/compression';
 import environment from './plugins/environment';
 import extractStyl from './plugins/extractCss';
@@ -21,6 +21,7 @@ dotenv(context);
 
 export default function browser(config) {
   const { production = false, development = true } = config;
+
   const props = {
     production,
     development,
@@ -35,20 +36,21 @@ export default function browser(config) {
     entry: entry(props),
     output: output(props),
     resolve: resolve(props),
-    devtool: development ? 'inline-source-map' : false,
+    devtool: development ? 'eval' : 'inline-source-map',
     module: {
       rules: [
         babel(),
         statics(),
-        browserStyl(props),
+        styl(props),
       ],
     },
     plugins: [
       composeGlobals(props),
-      extractStyl(props),
+      moduleConcatenation(),
       environment(props),
       development ? hmr() : false,
       production ? compression() : false,
+      production ? extractStyl(props) : false,
     ].filter(Boolean),
     optimization: optimization(props),
   };

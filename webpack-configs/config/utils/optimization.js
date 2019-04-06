@@ -1,4 +1,6 @@
+/* eslint-disable-next-line import/no-extraneous-dependencies */
 import UglifyJs from 'uglifyjs-webpack-plugin';
+/* eslint-disable-next-line import/no-extraneous-dependencies */
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default function optimize(props) {
@@ -10,11 +12,9 @@ export default function optimize(props) {
 
   return {
     splitChunks: {
-      minChunks: 2,
-      minSize: 1000,
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/].*/,
           name: 'vendors',
           chunks: 'all',
         },

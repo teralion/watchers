@@ -1,14 +1,14 @@
 import path from 'path';
 import { server as entry } from './utils/entry';
 import { server as output } from './utils/output';
-import optimization from './utils/optimization';
 import dotenv from './utils/dotenv';
 import resolve from './utils/resolve';
 import externals from './utils/externals';
 import babel from './loaders/babel';
 import mustache from './loaders/mustache';
-import serverStyl from './loaders/css';
+import { server as styl } from './loaders/css';
 import statics from './loaders/statics';
+import { moduleConcatenation } from './plugins/webpack';
 import composeGlobals from './plugins/globals';
 import extractStyl from './plugins/extractCss';
 import environment from './plugins/environment';
@@ -42,15 +42,15 @@ export default function server(config) {
       rules: [
         babel(),
         statics(),
-        serverStyl(props),
+        styl(props),
         mustache(props),
       ],
     },
     plugins: [
+      moduleConcatenation(),
       extractStyl(props),
       environment(props),
       composeGlobals(props),
     ],
-    optimization: optimization(props),
   };
 }
