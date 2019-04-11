@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.styl';
+import css from './index.styl';
 
 function Landing() {
   return (
@@ -15,7 +15,7 @@ function Landing() {
             <li>Статьи</li>
             <li>Контакты</li>
           </ul>
-          <div>
+          <div className={css.contacts}>
             <a href="tel:+7 (495) 136-64-65">+7 (495) 136-64-65</a>
             <p>Без выходных</p>
           </div>
