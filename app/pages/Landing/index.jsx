@@ -20,18 +20,20 @@ function Landing() {
             <p>Без выходных</p>
           </div>
         </nav>
-        <div>
-          <p>--- Это самопечатающийся текст</p>
-          <h1>Ремонт швейцарских часов в Москве</h1>
+        <div className={css.container}>
+          <p className={css.selfWritingText}>
+            --- Это самопечатающийся текст
+          </p>
+          <h1>Ремонт швейцарских часов в центре Москвы</h1>
           <img src="/logo-wh.png" alt="logo-whit" />
-          <button type="button">
+          <button type="button" className={css.default}>
             Узнать стоимость ремонта
           </button>
         </div>
       </header>
 
       {/* Middle */}
-      <section>
+      <section id={css.middle}>
         <h2>Когда часы приносят нам</h2>
         <div>
           <ul>
@@ -39,8 +41,8 @@ function Landing() {
             <li>Не хватает запаса хода</li>
             <li>Разбилось стекло</li>
             <li>Другие отказались делать</li>
-            <li>
-              <button type="button">
+            <li className={css.withButton}>
+              <button type="button" className={css.default}>
                 Читать отзывы о нас
               </button>
             </li>
@@ -51,9 +53,9 @@ function Landing() {
             <li>Поломка хронографа</li>
             <li>Разрядился элемент питания</li>
             <li>Нужна чистка / полировка</li>
-            <li>
-              <button type="button">
-                Услуги и цены
+            <li className={css.withButton}>
+              <button type="button" className={css.default}>
+                Услуги и базовые цены
               </button>
             </li>
           </ul>
@@ -61,7 +63,7 @@ function Landing() {
       </section>
 
       {/* Contacts */}
-      <section>
+      <section id="contacts">
         <div>
           <h2>
             Контакты и режим работы
@@ -97,14 +99,14 @@ function Landing() {
             Волконском переулке всегда есть места.
             До нас: 1 мин. пешком
           </p>
-          <button type="button">
+          <button type="button" className={css.default}>
             Где проехать и припарковаться
           </button>
         </div>
       </section>
 
       {/* Map */}
-      <section>
+      <section id="map">
         Карта
       </section>
 

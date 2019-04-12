@@ -18,7 +18,7 @@ header
       display inline-block
       font-family $fontRegular
       font-size x(14)
-      margin-left x(70)
+      margin-left x(60)
 
     .contacts
       display inline-block
@@ -27,7 +27,84 @@ header
 
       a
         color $white
+        text-decoration none
+        font-weight bold
+        font-size x(25)
+
+      p
+        margin x(0)
+        color $white
+        opacity 0.5
+        font-size x(16)
+
+  .container
+    width 80%
+    margin x(100) auto x(0)
+    padding-bottom x(20)
+
+    p.selfWritingText
+      color $beige
+      font-size x(16)
+
+    h1
+      color $white
+      font-family $fontLight
+      font-size x(45)
+      font-weight 300
+      width x(600)
+
+    img
+      margin-top x(50)
 
   nav img
     height auto
     width x(200)
+
+button.default
+  display block
+  font-family $fontMedium
+  font-weight 800
+  font-size x(18)
+  padding x(20) x(30)
+  background-color $beige
+  border none
+  border-radius x(40)
+  margin-top x(50)
+
+section h2
+  font-family $fontLight
+  font-weight 300
+  font-size x(45)
+  text-align center
+
+section#middle
+  padding-top x(50)
+
+  div
+    width fit-content
+    margin x(0) auto
+
+  ul
+    display inline-block
+    vertical-align top
+    margin-top x(100)
+
+    &:nth-child(3)
+      padding-left x(0)
+
+    &:nth-of-type(1)
+      li
+        text-align right
+
+      button
+        float right
+
+  li
+    list-style-type none
+    font-size x(20)
+    opacity 0.6
+    font-weight 400
+    padding x(15) x(0)
+
+    &.withButton
+      opacity 1
