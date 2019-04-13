@@ -18,7 +18,7 @@ header
       display inline-block
       font-family $fontRegular
       font-size x(14)
-      margin-left x(60)
+      margin-left x(40)
 
     .contacts
       display inline-block
@@ -76,6 +76,8 @@ section h2
   font-weight 300
   font-size x(45)
   text-align center
+  margin x(0)
+  margin-bottom x(40)
 
 section#middle
   padding-top x(50)
@@ -108,3 +110,99 @@ section#middle
 
     &.withButton
       opacity 1
+
+section#contacts
+  & > div
+    display inline-block
+    vertical-align top
+    min-height x(580)
+    padding-top x(50)
+
+  div.containerLeft
+    width 60%
+    background-color $gray
+    padding-left 10%
+
+    div
+      margin-bottom x(40)
+
+    h2
+      text-align left
+
+    div p
+      display inline-block
+      vertical-align top
+      margin x(0) x(0) x(0) x(15)
+      font-family $fontLight
+      font-weight 100
+      font-size x(20)
+
+    > p
+      font-family $fontLight
+      font-weight 100
+      font-size x(25)
+      width x(400)
+
+      &.worksTime
+        font-size x(20)
+        background-color $darkGray
+        color $white
+        padding x(10) x(20)
+        width x(250)
+        margin x(5) x(0)
+
+    h3
+      font-family $fontLight
+      font-weight 300
+      font-size x(40)
+
+  div.containerRight
+    width 40%
+    padding-left 8%
+    background-image url("../../../public/section-contacts-bg.png")
+
+    p
+      display inline-block
+      width x(400)
+      font-weight 300
+      color $white
+      &:nth-of-type(1)
+        font-size x(25)
+        margin-top x(40)
+      &:nth-of-type(2)
+        font-size x(20)
+        opacity 0.5
+
+  a
+    color $beige
+    font-family $fontLight
+    font-size x(40)
+    text-decoration none
+    border-bottom x(2) dashed $blurBeige
+    padding-bottom x(20)
+
+footer
+  background-color $darkerGray
+  padding-top x(50)
+
+  img
+    display block
+    margin x(0) auto
+
+  p, a
+    display inline-block
+    color $white
+    opacity 0.7
+    font-size x(20)
+    font-weight 300
+    text-decoration none
+    margin x(0) x(50)
+
+  a
+    border-bottom x(2) dashed $blurWhite
+    padding-bottom x(10)
+
+  div
+    width x(1080)
+    margin x(30) auto x(0)
+    padding-bottom x(30)

@@ -63,30 +63,33 @@ function Landing() {
       </section>
 
       {/* Contacts */}
-      <section id="contacts">
-        <div>
+      <section id={css.contacts}>
+        <div className={css.containerLeft}>
           <h2>
             Контакты и режим работы
           </h2>
           <div>
             <img src="/metro-icon.png" alt="metro-icon" />
-            <p>Цветной бульвар</p>
-            <p>(3 минуты пешком</p>
+            <p>
+              Цветной бульвар
+              <br />
+              (3 минуты пешком)
+            </p>
           </div>
           <p>
             Единственный выход из метро, налево
             300 метров по прямой и еще 100 метров
             налево
           </p>
-          <p>
+          <p className={css.worksTime}>
             Будни 10:00-21:00
           </p>
-          <p>
+          <p className={css.worksTime}>
             Выходные 11:00-20:00
           </p>
           <h3>Садовая-Самотёчная улица, 15/1</h3>
         </div>
-        <div>
+        <div className={css.containerRight}>
           <a href="tel:+7 (495) 136-64-65">
             +7 (495) 136-64-65
           </a>
@@ -106,9 +109,7 @@ function Landing() {
       </section>
 
       {/* Map */}
-      <section id="map">
-        Карта
-      </section>
+      <section id="map" />
 
       {/* Footer */}
       <footer>
