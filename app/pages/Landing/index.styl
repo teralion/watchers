@@ -1,3 +1,6 @@
+main
+  min-width x(360)
+
 header
   background-image url("../../../public/header-bg.png")
   background-size cover
@@ -130,7 +133,13 @@ button.default
   border none
   border-radius x(40)
   margin-top x(50)
+  cursor pointer
+  transition-duration .3s
 
+  &:hover
+    background-color #fff1c8
+    transform scale(1.1)
+    box-shadow x(0) x(5) x(10) x(1) rgba(0, 0, 0, 0.3)
 
 section h2
   font-family $fontLight
@@ -184,18 +193,45 @@ section#middle
     button
       margin x(0)
 
-
   +media('mediumLaptop')
+    div
+      flex-direction column
+      position relative
+      align-items flex-start
+      padding-left 5%
+      overflow hidden
+
+    h2
+      text-align center
+      padding 0 5%
+      width 90%
+
     img
+      position absolute
       background-image none
       order 3
+      z-index -1
+      bottom x(0)
+      left 70%
 
     li
       padding x(10)
       font-size x(20)
 
-    ul:last-of-type button
-      display none
+    ul
+      width x(300)
+
+      &:first-of-type
+        position relative
+        bottom x(50)
+        order 1
+
+        li
+          text-align left
+
+      &:last-of-type
+        button
+          display none
 
 section#contacts
   display flex
@@ -270,6 +306,39 @@ section#contacts
     border-bottom x(2) dashed $blurBeige
     padding-bottom x(20)
 
+
+  +media('mediumLaptop')
+    flex-direction column
+
+    div
+      &.containerLeft,
+      &.containerRight
+        width 100%
+        padding x(50) 5%
+
+      &.containerLeft
+        p
+          width 100%
+          max-width x(400)
+
+          &.worksTime
+            width 100%
+            max-width x(270)
+            padding x(15) 5%
+
+        h2
+          text-align center
+
+    a
+      display block
+      text-align center
+      max-width x(380)
+      margin x(0) auto
+
+    button
+      margin x(0) auto
+      margin-top x(50)
+
 footer
   background-color $darkerGray
   padding-top x(50)
@@ -299,3 +368,11 @@ footer
     width 100%
     margin x(30) auto x(0)
     padding-bottom x(30)
+
+  +media('mediumLaptop')
+    div
+      flex-direction column
+      align-items center
+
+    p, a
+      margin x(10) x(0)
