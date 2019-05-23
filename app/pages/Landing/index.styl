@@ -1,5 +1,3 @@
-main
-  min-width x(360)
 
 header
   background-image url("../../../public/header-bg.png")
@@ -123,6 +121,20 @@ header
       margin-top x(100)
 
 
+  +media('phonePortrait')
+    nav
+      div
+        &.contacts
+          a
+            font-size x(30)
+
+    div.container
+      h1
+        font-size x(30)
+
+    img
+      width 90%
+
 button.default
   display block
   font-family $fontMedium
@@ -205,6 +217,7 @@ section#middle
       text-align center
       padding 0 5%
       width 90%
+      margin x(0) auto
 
     img
       position absolute
@@ -212,7 +225,7 @@ section#middle
       order 3
       z-index -1
       bottom x(0)
-      left 70%
+      left 60%
       height 100%
 
     li
@@ -220,7 +233,7 @@ section#middle
       font-size x(20)
 
     ul
-      width x(300)
+      width 60%
 
       &:first-of-type
         position relative
@@ -351,6 +364,15 @@ section#contacts
     button
       margin x(0) auto
       margin-top x(50)
+
+  +media('phonePortrait')
+    div.containerLeft
+      h3
+        font-size x(30)
+
+    a
+      font-size x(30)
+      padding-bottom x(10)
 
 footer
   background-color $darkerGray
