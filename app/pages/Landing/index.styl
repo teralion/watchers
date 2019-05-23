@@ -2,28 +2,34 @@ header
   background-image url("../../../public/header-bg.png")
   background-size cover
   padding-top x(20)
+  padding-bottom x(40)
+  width 100%
 
   ul
     display inline-block
     vertical-align top
-    margin-top x(30)
-    padding-left x(0)
+    margin x(0)
+    padding x(0)
 
   nav
     width 80%
     margin 0 auto
+    display flex
+    align-items center
+    justify-content space-between
 
     li
       color white
       display inline-block
       font-family $fontRegular
       font-size x(14)
-      margin-left x(40)
+      margin x(0) x(20)
+      padding x(5) x(0)
 
     .contacts
       display inline-block
       float right
-      margin-top x(30)
+      flex-shrink 0
 
       a
         color $white
@@ -40,7 +46,6 @@ header
   .container
     width 80%
     margin x(100) auto x(0)
-    padding-bottom x(20)
 
     p.selfWritingText
       color $beige
@@ -59,6 +64,61 @@ header
   nav img
     height auto
     width x(200)
+    flex-shrink 0
+
+
+  +media('mediumLaptop')
+    nav
+      flex-direction column
+      width 100%
+
+      img
+        display none
+
+      ul
+        display flex
+        justify-content center
+        width 100%
+
+      li
+        margin x(0) 2%
+        min-width x(70)
+        width 20%
+        text-align center
+
+        &:nth-last-of-type(3)
+        &:nth-last-of-type(4)
+          display none
+
+      div
+        &.contacts
+          margin-top x(50)
+
+          a
+            font-weight 300
+            font-size x(40)
+
+          p
+            font-weight 300
+            text-align center
+
+    div.container
+      width 90%
+      padding x(0) 5%
+
+      h1,
+      p.selfWritingText
+        text-align center
+        width auto
+
+    img
+      display block
+      margin x(50) auto
+
+    button.default
+      margin x(0) auto
+      margin-top x(100)
+
 
 button.default
   display block
@@ -71,6 +131,7 @@ button.default
   border-radius x(40)
   margin-top x(50)
 
+
 section h2
   font-family $fontLight
   font-weight 300
@@ -82,14 +143,21 @@ section h2
 section#middle
   padding-top x(50)
 
+  img
+    background-image url("../../../public/lines.png")
+    background-repeat no-repeat
+    background-position 50% 40%
+    background-size 95%
+
   div
-    width fit-content
+    display flex
+    justify-content center
+    align-items center
     margin x(0) auto
 
   ul
-    display inline-block
     vertical-align top
-    margin-top x(100)
+    padding x(0)
 
     &:nth-child(3)
       padding-left x(0)
@@ -99,19 +167,39 @@ section#middle
         text-align right
 
       button
-        float right
+        display inline-block
 
   li
     list-style-type none
     font-size x(20)
     opacity 0.6
     font-weight 400
-    padding x(15) x(0)
+    padding x(35) x(0)
+    position relative
+    top x(40)
 
     &.withButton
       opacity 1
 
+    button
+      margin x(0)
+
+
+  +media('mediumLaptop')
+    img
+      background-image none
+      order 3
+
+    li
+      padding x(10)
+      font-size x(20)
+
+    ul:last-of-type button
+      display none
+
 section#contacts
+  display flex
+
   & > div
     display inline-block
     vertical-align top
@@ -163,7 +251,8 @@ section#contacts
 
     p
       display inline-block
-      width x(400)
+      width 90%
+      max-width x(400)
       font-weight 300
       color $white
       &:nth-of-type(1)
@@ -197,12 +286,16 @@ footer
     font-weight 300
     text-decoration none
     margin x(0) x(50)
+    width x(300)
+    text-align center
 
   a
     border-bottom x(2) dashed $blurWhite
     padding-bottom x(10)
 
   div
-    width x(1080)
+    display flex
+    justify-content center
+    width 100%
     margin x(30) auto x(0)
     padding-bottom x(30)

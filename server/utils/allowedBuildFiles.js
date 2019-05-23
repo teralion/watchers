@@ -8,14 +8,14 @@ function getFileTests() {
     return [
       v => /^(app|vendors)@\w{12}\.(js|css)$/.test(v),
       v => /^server@\w{12}\.css$/.test(v),
-      v => /\.(png|jpe?g|woff|ttf|pdf)$/.test(v),
+      v => /\.(png|jpe?g|woff|ttf|pdf|otf)$/.test(v),
     ];
   }
 
   return [
     v => /^(app|vendors)\.(js|css)$/.test(v),
     v => /^server\.css$/.test(v),
-    v => /\.(png|jpe?g|woff|ttf|pdf)$/.test(v),
+    v => /\.(png|jpe?g|woff|ttf|pdf|otf)$/.test(v),
   ];
 }
 
