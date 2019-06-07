@@ -1,7 +1,7 @@
 
 export default function getStatics() {
   return {
-    test: /\.(png|jpe?g|woff|pdf|ttf|otf)$/,
+    test: /\.(png|jpe?g|woff|pdf|ttf|otf|mp4)$/,
     use: {
       loader: 'file-loader',
       options: {

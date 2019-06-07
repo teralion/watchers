@@ -69,6 +69,8 @@ function Landing() {
             Узнать стоимость ремонта
           </button>
         </div>
+
+        <video src="/video.mp4" muted autoPlay className={css.video} />
       </header>
 
       {/* Middle */}
