@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Typed from 'typed.js';
 import css from './index.styl';
 
 function Landing() {
+  useEffect(() => {
+    const typedText = new Typed(`.${css.selfWritingText}`, {
+      strings: ['--- Это самопечатающийся текст'],
+      typeSpeed: 100,
+      loop: true,
+    });
+  }, []);
+
   return (
     <main>
       {/* Header */}
@@ -9,11 +18,11 @@ function Landing() {
         <nav>
           <img src="/logo-gold.png" alt="logo-gold" />
           <ul>
-            <li>Услуги и цены</li>
-            <li>Довольные клиенты</li>
-            <li>О нас</li>
-            <li>Статьи</li>
-            <li>Контакты</li>
+            <li><a href="#middle">Услуги и цены</a></li>
+            <li><a href="#">Довольные клиенты</a></li>
+            <li><a href="#maps">О нас</a></li>
+            <li><a href="news.html">Статьи</a></li>
+            <li><a href="#contacts">Контакты</a></li>
           </ul>
           <div className={css.contacts}>
             <a href="tel:+7 (495) 136-64-65">+7 (495) 136-64-65</a>
@@ -21,9 +30,7 @@ function Landing() {
           </div>
         </nav>
         <div className={css.container}>
-          <p className={css.selfWritingText}>
-            --- Это самопечатающийся текст
-          </p>
+          <p className={css.selfWritingText} />
           <h1>Ремонт швейцарских часов в центре Москвы</h1>
           <img src="/logo-wh.png" alt="logo-whit" />
           <button type="button" className={css.default}>
@@ -102,14 +109,24 @@ function Landing() {
             Волконском переулке всегда есть места.
             До нас: 1 мин. пешком
           </p>
-          <button type="button" className={css.default}>
+          <a href="#maps" className={css.default}>
             Где проехать и припарковаться
-          </button>
+          </a>
         </div>
       </section>
 
       {/* Map */}
-      <section id="map" />
+      <section id="map">
+        <iframe
+          title="google map"
+          width="100%"
+          height="650"
+          frameBorder="0"
+          style={{ border: 0 }}
+          src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJybDUc_xKtUYRTM9XV8zWRD0&key=AIzaSyAHKQ3GxH29--TSfkxmaQNdIbXB4iMQGR4"
+          allowFullScreen
+        />
+      </section>
 
       {/* Footer */}
       <footer>

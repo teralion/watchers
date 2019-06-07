@@ -20,12 +20,19 @@ header
     justify-content space-between
 
     li
-      color white
       display inline-block
       font-family $fontRegular
       font-size x(14)
       margin x(0) x(20)
       padding x(5) x(0)
+
+      a
+        color white
+        text-decoration none
+        font-weight 300
+
+        &:hover
+          text-decoration underline
 
     .contacts
       display inline-block
@@ -33,7 +40,7 @@ header
       flex-shrink 0
 
       a
-        color $white
+        color white
         text-decoration none
         font-weight bold
         font-size x(25)
@@ -87,8 +94,8 @@ header
         width 20%
         text-align center
 
-        &:nth-last-of-type(3)
-        &:nth-last-of-type(4)
+        &:nth-of-type(3)
+        &:nth-of-type(4)
           display none
 
       div
@@ -136,6 +143,7 @@ header
       width 90%
 
 button.default
+a.default
   display block
   font-family $fontMedium
   font-weight 800
@@ -315,7 +323,7 @@ section#contacts
         font-size x(20)
         opacity 0.5
 
-  a
+  a:not(.default)
     color $beige
     font-family $fontLight
     font-size x(40)
@@ -323,6 +331,10 @@ section#contacts
     border-bottom x(2) dashed $blurBeige
     padding-bottom x(20)
 
+  a.default
+    display inline-block
+    text-decoration none
+    color black
 
   +media('mediumLaptop')
     flex-direction column
