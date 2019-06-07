@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
+import { Parallax } from 'react-parallax';
 
 import Nav from 'app/Elements/Nav';
 import Footer from 'app/Elements/Footer';
@@ -25,6 +26,7 @@ function Landing() {
       strings: ['--- Это самопечатающийся текст'],
       typeSpeed: 100,
       loop: true,
+      showCursor: false,
     });
   }, []);
 
@@ -123,6 +125,8 @@ function Landing() {
           </a>
         </div>
       </section>
+
+      <Parallax strength={300} contentClassName={css.parallax} bgImage="/header-bg.png" bgImageAlt="parallax" />
 
       {/* Map */}
       <section id="maps">
