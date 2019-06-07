@@ -22,6 +22,8 @@ function onModalWrapperClick(event) {
 }
 
 function onScroll() {
+  if (window.innerWidth < 1085) return;
+
   const navElem = document.querySelector('nav');
   const { offsetTop } = navElem;
   const scroll = window.scrollY || window.pageYOffset;
@@ -62,7 +64,9 @@ function Landing() {
     <main>
       {/* Header */}
       <header>
-        <Nav className={css.nav} />
+        <div className={css.navWrapper}>
+          <Nav className={css.nav} />
+        </div>
         <div className={css.container}>
           <p className={css.selfWritingText} />
           <h1>Ремонт швейцарских часов в центре Москвы</h1>

@@ -404,6 +404,9 @@ div.wrapper
   visibility hidden
   opacity 0
 
+.navWrapper
+  min-height x(80)
+
 .nav
   transition background-color .3s
 
@@ -413,3 +416,6 @@ div.wrapper
   padding x(0) 10%
   width 100%
   background-color rgba(0, 0, 0, 0.3)
+  +media('mediumLaptop')
+    position static
+    background-color transparent
