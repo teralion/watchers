@@ -9,13 +9,13 @@ export default function Nav(props) {
 
   return (
     <nav className={className}>
-      <img src="/logo-gold.png" alt="logo-gold" />
+      <Link to="/"><img src="/logo-gold.png" alt="logo-gold" /></Link>
       <ul>
-        <li><a href="#middle">Услуги и цены</a></li>
-        <li><a href="#">Довольные клиенты</a></li>
-        <li><a href="#maps">О нас</a></li>
+        <li><a href="/#middle">Услуги и цены</a></li>
         <li><Link to="/news">Статьи</Link></li>
-        <li><a href="#contacts">Контакты</a></li>
+        <li><a href="/#">Довольные клиенты</a></li>
+        <li><a href="/#maps">О нас</a></li>
+        <li><a href="/#contacts">Контакты</a></li>
       </ul>
       <div className={css.contacts}>
         <a href="tel:+7 (495) 136-64-65">+7 (495) 136-64-65</a>

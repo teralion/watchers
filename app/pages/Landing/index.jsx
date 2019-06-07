@@ -38,7 +38,7 @@ function Landing() {
       </header>
 
       {/* Middle */}
-      <section id={css.middle}>
+      <section id="middle" className={css.middle}>
         <h2>Когда часы приносят нам</h2>
         <div>
           <ul>
@@ -68,7 +68,7 @@ function Landing() {
       </section>
 
       {/* Contacts */}
-      <section id={css.contacts}>
+      <section id="contacts" className={css.contacts}>
         <div className={css.containerLeft}>
           <h2>
             Контакты и режим работы
@@ -114,14 +114,14 @@ function Landing() {
       </section>
 
       {/* Map */}
-      <section id="map">
+      <section id="maps">
         <iframe
           title="google map"
           width="100%"
           height="650"
           frameBorder="0"
           style={{ border: 0 }}
-          src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJybDUc_xKtUYRTM9XV8zWRD0&key=AIzaSyAHKQ3GxH29--TSfkxmaQNdIbXB4iMQGR4"
+          src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJgzkzoWxKtUYReyrRubnygk8&key=AIzaSyAHKQ3GxH29--TSfkxmaQNdIbXB4iMQGR4"
           allowFullScreen
         />
       </section>

@@ -4,31 +4,123 @@
   width 100%
   padding x(20) 10%
 
-article
-  margin-top x(50)
-  padding x(50) 10%
+.article
+  width 100%
+  padding x(50) 20%
 
-h1
+.h1
   font-family $fontLight
   font-weight 300
   font-size x(45)
   text-align center
   margin x(0)
-  margin-bottom x(40)
+  margin-bottom x(80)
 
-section
+.section
   display flex
   align-items center
   margin-bottom x(20)
+  background-color rgba(0, 0, 0, 0.1)
+  max-width x(1800)
+  margin-left auto
+  margin-right auto
+
+  a
+    width x(300)
+    position relative
+    overflow hidden
+    display flex
+    align-items center
+    justify-content center
+    margin-right x(30)
+    flex-shrink 0
+    transition-duration 0.3s
+
+    &:before
+      content 'Читать полностью'
+      position absolute
+      top x(90)
+      left x(50)
+      width x(200)
+      height x(50)
+      color black
+      font-size x(14)
+      background-color $beige
+      font-weight 900
+      border-radius x(50)
+      display flex
+      align-items center
+      justify-content center
+      z-index +1
+      transition-duration 0.3s
+
+      &:hover
+        filter saturate(300%)
+
+    &:hover
+      filter saturate(300%)
 
   img
     width x(400)
-    margin-right x(40)
 
   h2
     font-weight 300
     font-size x(24)
+    text-align left
+    margin-bottom x(10)
+    opacity 0.8
 
   .details
-    width 50%
+    width 90%
+    margin-right x(30)
+
+    p
+      font-size x(12)
+      opacity 0.6
+
++media('mediumLaptop')
+  .article
+    padding-top x(40)
+
+  .h1
+    font-size x(36)
+    margin-bottom x(40)
+
+  .section
+    flex-direction column
+
+    img
+      width 100%
+
+    a
+      margin x(0)
+      width 100%
+      max-height x(200)
+
+      &:before
+        width 100%
+        height 100%
+        background-color rgba(0, 0, 0, 0.4)
+        left 0
+        top 0
+        color $beige
+
+    h2
+      font-size x(20)
+
+    .details
+      margin x(20)
+
++media('phonePortrait')
+  .article
+    padding-left 5%
+    padding-right @padding-left
+
+  .h1
+    font-size x(28)
+    margin-bottom x(20)
+
+  .section
+    h2
+      font-size x(18)
 

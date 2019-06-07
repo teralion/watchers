@@ -9,15 +9,15 @@ export default function NewsPage() {
   return (
     <>
       <Nav className={css.nav} />
-      <article>
-        <h1>
+      <article className={css.article}>
+        <h1 className={css.h1}>
           Полезные и познавательные статьи
           {' '}
           <br />
           Не дайти себя обмануть!
         </h1>
 
-        <section>
+        <section className={css.section}>
           <a href="#"><img src="/news-1.png" alt="news-1" /></a>
           <div className={css.details}>
             <h2>В чем сложность ремонта часов и почему это стоит дорого?</h2>
@@ -32,7 +32,7 @@ export default function NewsPage() {
           </div>
         </section>
 
-        <section>
+        <section className={css.section}>
           <a href="#"><img src="/news-2.png" alt="news-1" /></a>
           <div className={css.details}>
             <h2>Ремонт швейцарских часов. Почему важно доверить профессионалам?</h2>
