@@ -1,0 +1,93 @@
+nav
+  width 80%
+  margin 0 auto
+  display flex
+  align-items center
+  justify-content space-between
+
+  ul
+    display inline-block
+    vertical-align top
+    margin x(0)
+    padding x(0)
+
+  li
+    display inline-block
+    font-family $fontRegular
+    font-size x(14)
+    margin x(0) x(20)
+    padding x(5) x(0)
+
+    a
+      color white
+      text-decoration none
+      font-weight 300
+      text-align center
+
+      &:hover
+        text-decoration underline
+
+  .contacts
+    display inline-block
+    float right
+    flex-shrink 0
+
+    a
+      color white
+      text-decoration none
+      font-weight bold
+      font-size x(25)
+
+    p
+      margin x(0)
+      color $white
+      opacity 0.5
+      font-size x(16)
+
+
+  img
+    height auto
+    width x(200)
+    flex-shrink 0
+
++media('mediumLaptop')
+  nav
+    flex-direction column
+    width 100%
+
+    img
+      display none
+
+    ul
+      display flex
+      justify-content center
+      width 100%
+
+    li
+      margin x(0) 2%
+      min-width x(70)
+      width 20%
+      text-align center
+
+      &:nth-of-type(3)
+      &:nth-of-type(4)
+        display none
+
+    div
+      &.contacts
+        margin-top x(50)
+
+        a
+          font-weight 300
+          font-size x(40)
+
+        p
+          font-weight 300
+          text-align center
+
++media('phonePortrait')
+  nav
+    div
+      &.contacts
+        a
+          font-size x(30)

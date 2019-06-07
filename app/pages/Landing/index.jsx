@@ -1,6 +1,17 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
+
+import Nav from 'app/Elements/Nav';
+import Footer from 'app/Elements/Footer';
+
 import css from './index.styl';
+
+function toggleModal() {
+  const modalElem = document.querySelector(`.${css.wrapper}`);
+  const mainElem = document.querySelector('main');
+  mainElem.classList.toggle(css.blur);
+  modalElem.classList.toggle(css.hidden);
+}
 
 function Landing() {
   useEffect(() => {
@@ -15,25 +26,12 @@ function Landing() {
     <main>
       {/* Header */}
       <header>
-        <nav>
-          <img src="/logo-gold.png" alt="logo-gold" />
-          <ul>
-            <li><a href="#middle">Услуги и цены</a></li>
-            <li><a href="#">Довольные клиенты</a></li>
-            <li><a href="#maps">О нас</a></li>
-            <li><a href="news.html">Статьи</a></li>
-            <li><a href="#contacts">Контакты</a></li>
-          </ul>
-          <div className={css.contacts}>
-            <a href="tel:+7 (495) 136-64-65">+7 (495) 136-64-65</a>
-            <p>Без выходных</p>
-          </div>
-        </nav>
+        <Nav />
         <div className={css.container}>
           <p className={css.selfWritingText} />
           <h1>Ремонт швейцарских часов в центре Москвы</h1>
           <img src="/logo-wh.png" alt="logo-whit" />
-          <button type="button" className={css.default}>
+          <button type="button" className={css.default} onClick={toggleModal}>
             Узнать стоимость ремонта
           </button>
         </div>
@@ -129,16 +127,20 @@ function Landing() {
       </section>
 
       {/* Footer */}
-      <footer>
-        <img src="/logo-gold.png" alt="logo-gold" />
-        <div>
-          <p>ОГРН: 317746002020454</p>
-          <a href="/policy">
-            Политика конфиденциальности
-          </a>
-          <p>ИНН: 771004647806</p>
+      <Footer />
+
+      <div className={`${css.wrapper} ${css.hidden}`}>
+        <div className={css.modal}>
+          <button type="button" className={css.close} onClick={toggleModal}>✕</button>
+          <a href="tel:+7 (495) 136-64-65">+7 (495) 136-64-65</a>
+          <form action="mail.php" method="GET">
+            <input type="text" name="tel" placeholder="+7 (XXX) XXX-XX-XX" />
+            <input type="text" name="watch-model" placeholder="Модель часов (если известно)" />
+            <button type="submit" name="button" className={css.default}>Отправить</button>
+          </form>
         </div>
-      </footer>
+      </div>
+
     </main>
   );
 }

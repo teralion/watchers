@@ -1,55 +1,19 @@
 
+centerColumn()
+  display flex
+  flex-direction column
+  align-items center
+
+main
+  &.blur > *:not(.wrapper)
+    filter blur(x(5))
+
 header
   background-image url("../../../public/header-bg.png")
   background-size cover
   padding-top x(20)
   padding-bottom x(40)
   width 100%
-
-  ul
-    display inline-block
-    vertical-align top
-    margin x(0)
-    padding x(0)
-
-  nav
-    width 80%
-    margin 0 auto
-    display flex
-    align-items center
-    justify-content space-between
-
-    li
-      display inline-block
-      font-family $fontRegular
-      font-size x(14)
-      margin x(0) x(20)
-      padding x(5) x(0)
-
-      a
-        color white
-        text-decoration none
-        font-weight 300
-
-        &:hover
-          text-decoration underline
-
-    .contacts
-      display inline-block
-      float right
-      flex-shrink 0
-
-      a
-        color white
-        text-decoration none
-        font-weight bold
-        font-size x(25)
-
-      p
-        margin x(0)
-        color $white
-        opacity 0.5
-        font-size x(16)
 
   .container
     width 80%
@@ -58,6 +22,7 @@ header
     p.selfWritingText
       color $beige
       font-size x(16)
+      height x(20)
 
     h1
       color $white
@@ -69,47 +34,7 @@ header
     img
       margin-top x(50)
 
-  nav img
-    height auto
-    width x(200)
-    flex-shrink 0
-
-
   +media('mediumLaptop')
-    nav
-      flex-direction column
-      width 100%
-
-      img
-        display none
-
-      ul
-        display flex
-        justify-content center
-        width 100%
-
-      li
-        margin x(0) 2%
-        min-width x(70)
-        width 20%
-        text-align center
-
-        &:nth-of-type(3)
-        &:nth-of-type(4)
-          display none
-
-      div
-        &.contacts
-          margin-top x(50)
-
-          a
-            font-weight 300
-            font-size x(40)
-
-          p
-            font-weight 300
-            text-align center
-
     div.container
       width 90%
       padding x(0) 5%
@@ -127,14 +52,7 @@ header
       margin x(0) auto
       margin-top x(100)
 
-
   +media('phonePortrait')
-    nav
-      div
-        &.contacts
-          a
-            font-size x(30)
-
     div.container
       h1
         font-size x(30)
@@ -386,40 +304,64 @@ section#contacts
       font-size x(30)
       padding-bottom x(10)
 
-footer
-  background-color $darkerGray
-  padding-top x(50)
+div.wrapper
+  position fixed
+  top 0
+  left 0
+  background-color rgba(0, 0, 0, 0.7)
+  width 100%
+  height 100%
+  display flex
+  align-items center
+  justify-content center
+  transition-duration .3s
 
-  img
-    display block
-    margin x(0) auto
+  .modal
+    position relative
+    background-color white
+    padding x(80) x(50)
+    centerColumn()
 
-  p, a
-    display inline-block
-    color $white
-    opacity 0.7
-    font-size x(20)
-    font-weight 300
-    text-decoration none
-    margin x(0) x(50)
-    width x(300)
-    text-align center
+    .close
+      position absolute
+      top x(10)
+      right x(10)
+      background-color transparent
+      border none
+      cursor pointer
+      font-size x(25)
+      font-weight 500
+      opacity 0.4
+      transition .3s
 
-  a
-    border-bottom x(2) dashed $blurWhite
-    padding-bottom x(10)
+      &:hover
+        opacity 1
 
-  div
-    display flex
-    justify-content center
-    width 100%
-    margin x(30) auto x(0)
-    padding-bottom x(30)
 
-  +media('mediumLaptop')
-    div
-      flex-direction column
-      align-items center
+    a
+      display block
+      color black
+      font-family $fontLight
+      font-size x(30)
+      text-decoration none
+      border-bottom x(2) dashed $blurBlack
+      padding-bottom x(5)
+      margin-bottom x(30)
 
-    p, a
-      margin x(10) x(0)
+    form
+      centerColumn()
+
+    input
+      margin-bottom x(20)
+      padding x(5) x(10)
+      font-size x(20)
+      font-weight 300
+      width x(300)
+
+    button.default
+      width 100%
+      margin-top x(30)
+
+.hidden
+  visibility hidden
+  opacity 0
