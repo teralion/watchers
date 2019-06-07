@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
+import debounce from 'lodash.debounce';
 import { Parallax } from 'react-parallax';
 
 import Nav from 'app/Elements/Nav';
@@ -20,6 +21,20 @@ function onModalWrapperClick(event) {
   if (!event.target.closest(`.${css.modal}`)) toggleModal();
 }
 
+function onScroll() {
+  const navElem = document.querySelector('nav');
+  const { offsetTop } = navElem;
+  const scroll = window.scrollY || window.pageYOffset;
+
+  if (offsetTop < scroll) navElem.classList.add(css.fixed);
+  else navElem.classList.remove(css.fixed);
+}
+
+const debouncedOnScroll = debounce(
+  onScroll,
+  500,
+);
+
 function Landing() {
   useEffect(() => {
     const typedText = new Typed(`.${css.selfWritingText}`, {
@@ -35,11 +50,19 @@ function Landing() {
     modalWrapperElem.addEventListener('click', onModalWrapperClick);
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => () => {
+    window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <main>
       {/* Header */}
       <header>
-        <Nav />
+        <Nav className={css.nav} />
         <div className={css.container}>
           <p className={css.selfWritingText} />
           <h1>Ремонт швейцарских часов в центре Москвы</h1>
