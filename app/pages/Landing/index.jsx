@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
-import debounce from 'lodash.debounce';
 import { Parallax } from 'react-parallax';
 
 import Nav from 'app/Elements/Nav';
@@ -31,11 +30,6 @@ function onScroll() {
   if (offsetTop < scroll) navElem.classList.add(css.fixed);
   else navElem.classList.remove(css.fixed);
 }
-
-const debouncedOnScroll = debounce(
-  onScroll,
-  500,
-);
 
 function Landing() {
   useEffect(() => {
