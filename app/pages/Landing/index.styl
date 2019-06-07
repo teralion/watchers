@@ -321,6 +321,8 @@ div.wrapper
     position relative
     background-color white
     padding x(80) x(50)
+    max-width x(400)
+    width 100%
     centerColumn()
 
     .close
@@ -337,7 +339,6 @@ div.wrapper
 
       &:hover
         opacity 1
-
 
     a
       display block
@@ -357,11 +358,29 @@ div.wrapper
       padding x(5) x(10)
       font-size x(20)
       font-weight 300
-      width x(300)
+      width 100%
 
     button.default
       width 100%
       margin-top x(30)
+
+  +media('phonePortrait')
+    .modal
+      padding x(40) x(20)
+      max-width x(300)
+
+      a
+        font-size x(24)
+
+      form
+        width 100%
+
+      input
+        font-size x(16)
+
+      button.default
+        margin-top x(10)
+        padding x(10) x(15)
 
 .hidden
   visibility hidden

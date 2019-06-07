@@ -7,10 +7,16 @@ import Footer from 'app/Elements/Footer';
 import css from './index.styl';
 
 function toggleModal() {
-  const modalElem = document.querySelector(`.${css.wrapper}`);
+  const modalWrapperElem = document.querySelector(`.${css.wrapper}`);
   const mainElem = document.querySelector('main');
   mainElem.classList.toggle(css.blur);
-  modalElem.classList.toggle(css.hidden);
+  modalWrapperElem.classList.toggle(css.hidden);
+}
+
+function onModalWrapperClick(event) {
+  const modalWrapperElem = document.querySelector(`.${css.wrapper} .${css.hidden}`);
+  if (modalWrapperElem) return;
+  if (!event.target.closest(`.${css.modal}`)) toggleModal();
 }
 
 function Landing() {
@@ -20,6 +26,11 @@ function Landing() {
       typeSpeed: 100,
       loop: true,
     });
+  }, []);
+
+  useEffect(() => {
+    const modalWrapperElem = document.querySelector(`.${css.wrapper}`);
+    modalWrapperElem.addEventListener('click', onModalWrapperClick);
   }, []);
 
   return (
